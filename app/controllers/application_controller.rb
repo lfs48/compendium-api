@@ -6,7 +6,11 @@ class ApplicationController < ActionController::API
 
   private
   def token(user_id)
-    payload = { user_id: user_id }
+    exp = Time.now.to_i + (60*60*24*30)
+    payload = { 
+      sub: user_id,
+      exp: exp
+    }
     token = JWT.encode(payload, jwt_secret, 'HS256')
     return token
   end
@@ -20,7 +24,7 @@ class ApplicationController < ActionController::API
       token = request.headers["Authorization"]
       decoded_array = JWT.decode( token, jwt_secret, true, { algorithm: 'HS256' } )
       payload = decoded_array.first
-      return payload["user_id"]
+      return payload["sub"]
     rescue #JWT::VerificationError
       return nil
     end
