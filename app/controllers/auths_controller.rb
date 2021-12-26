@@ -6,7 +6,8 @@ class AuthsController < ApplicationController
         @token = token(@user.id)
         render "auth/show", status: :ok
       else 
-        render json: { errors: [ "Incorrect username or password" ] }, status: :unprocessable_entity
+        @errors = {form: [ "Incorrect username or password" ] };
+        render "errors/show", status: :unprocessable_entity
       end 
     end
 
@@ -16,7 +17,8 @@ class AuthsController < ApplicationController
           @token = token(@user.id)
           render "auth/show", status: :created
       else
-          render json: @user.errors.full_messages, status: :unprocessable_entity
+          @errors = @user.errors
+          render "errors/show", status: :unprocessable_entity
       end
     end
   
