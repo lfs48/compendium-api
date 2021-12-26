@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :users, only: [:create, :show]
+  resources :users, only: [:show]
 
-  resource :auth, only: [:create]
+  resource :auth do
+    post 'login'
+    post 'register'
+  end
 
 end
