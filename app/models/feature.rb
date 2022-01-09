@@ -2,11 +2,11 @@ class Feature < ApplicationRecord
 
     validates :name, 
     :description, 
-    :type, 
+    :kind, 
     :category, 
     presence: true
 
-    validates :type, 
+    validates :kind, 
     inclusion: { 
         in: [
             "core",
