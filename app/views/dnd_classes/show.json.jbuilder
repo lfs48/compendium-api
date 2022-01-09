@@ -1,0 +1,1 @@
+json.partial! "dnd_classes/dndclass", dndclass: @dndclass

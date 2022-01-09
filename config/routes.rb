@@ -7,4 +7,6 @@ Rails.application.routes.draw do
     post 'register'
   end
 
+  resources :classes, controller: 'dnd_classes', only: [:show, :create, :update, :destroy]
+
 end

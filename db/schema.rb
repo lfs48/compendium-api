@@ -10,11 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_24_194324) do
+ActiveRecord::Schema.define(version: 2022_01_07_231140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "dnd_classes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description", null: false
+    t.string "hitdie", null: false
+    t.string "armor", null: false
+    t.string "weapons", null: false
+    t.string "tools", null: false
+    t.string "saves", null: false
+    t.string "skills", null: false
+    t.string "equipment", default: [], array: true
+    t.string "spellcasting", null: false
+    t.json "table_cols", default: {}
+    t.string "subclass_title", null: false
+    t.integer "subclass_feature_levels", default: [], array: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "feature_sources", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "source_id", null: false
+    t.string "feature_id", null: false
+    t.string "source_type", null: false
+    t.integer "level"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["source_id", "feature_id"], name: "index_feature_sources_on_source_id_and_feature_id", unique: true
+  end
+
+  create_table "features", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description", null: false
+    t.string "type", null: false
+    t.string "category", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "username", null: false
