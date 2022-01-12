@@ -3,6 +3,11 @@ class DndClassesController < ApplicationController
     before_action :get_class_by_id, only: [:show, :update, :destroy]
     before_action :require_auth, only: [:create, :update]
 
+    def index
+        @dndclasses = DndClass.all
+        render "dnd_classes/index"
+    end
+    
     def show
         if @dndclass
             render "dnd_classes/show"
@@ -52,7 +57,8 @@ class DndClassesController < ApplicationController
             :spellcasting, 
             { table_cols: {} }, 
             :subclass_title, 
-            {subclass_feature_levels: [] }
+            {subclass_feature_levels: [] },
+            {features: [] }
         )
     end
 

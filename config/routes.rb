@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :classes, 
   controller: 'dnd_classes', 
   only: [
+    :index,
     :show, 
     :create, 
     :update, 
