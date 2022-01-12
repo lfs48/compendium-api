@@ -30,6 +30,15 @@ class Feature < ApplicationRecord
         message: "must be one of: action, quick action, reaction, passive, triggered, misc"
     }
 
-    belongs_to :source, polymorphic: true
+    has_many :feature_sources
+
+    has_many :source_classes, 
+    through: :feature_sources,
+    source: :source,
+    source_type: 'DndClass'
+
+    def sources
+        return self.source_classes
+    end
 
 end

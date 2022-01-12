@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 2022_01_07_231140) do
   end
 
   create_table "feature_sources", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "source_id", null: false
-    t.string "feature_id", null: false
+    t.uuid "source_id", null: false
+    t.uuid "feature_id", null: false
     t.string "source_type", null: false
     t.integer "level"
     t.datetime "created_at", precision: 6, null: false

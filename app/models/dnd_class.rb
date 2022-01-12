@@ -47,4 +47,11 @@ class DndClass < ApplicationRecord
         end
     end
 
+    has_many :feature_sources,
+    as: :source
+
+    has_many :features, 
+    as: :source,
+    through: :feature_sources
+
 end
