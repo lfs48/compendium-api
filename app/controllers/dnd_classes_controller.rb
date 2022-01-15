@@ -37,6 +37,7 @@ class DndClassesController < ApplicationController
 
     def destroy
         @dndclass.destroy
+        render "dnd_classes/show"
     end
 
     private

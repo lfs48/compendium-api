@@ -32,6 +32,7 @@ class FeaturesController < ApplicationController
 
     def destroy
         @feature.destroy
+        render "features/show"
     end
 
     def create_source
