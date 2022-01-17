@@ -1,5 +1,4 @@
-json.dndclass do
-    json.extract! dndclass, 
+json.extract! dndclass, 
     :id, 
     :name, 
     :description, 
@@ -15,11 +14,9 @@ json.dndclass do
     :subclass_title, 
     :subclass_feature_levels
     
-    json.features do
-        json.array! dndclass.feature_sources do |feature|
-            json.extract! feature,
-            :id,
-            :level
-        end
+json.features do
+    json.array! dndclass.feature_sources do |feature_source|
+            json.id feature_source.feature_id
+            json.level feature_source.level
     end
 end
