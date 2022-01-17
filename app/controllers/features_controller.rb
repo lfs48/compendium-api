@@ -3,6 +3,11 @@ class FeaturesController < ApplicationController
     before_action :get_feature_by_id, only: [:show, :update, :destroy, :create_source, :destroy_source]
     before_action :require_auth, only: [:create, :update]
 
+    def index
+        @features = Feature.all
+        render "features/index"
+    end
+
     def show
         if @feature
             render "features/show"
