@@ -4,7 +4,7 @@ class FeaturesController < ApplicationController
     before_action :require_auth, only: [:create, :update]
 
     def index
-        @features = Feature.all
+        @features = Feature.includes(:feature_sources).all
         render "features/index"
     end
 
@@ -70,7 +70,7 @@ class FeaturesController < ApplicationController
     end
 
     def get_feature_by_id
-        @feature = Feature.find_by(id: params[:id])
+        @feature = Feature..includes(:feature_sources).find_by(id: params[:id])
     end
 
     def feature_source_params

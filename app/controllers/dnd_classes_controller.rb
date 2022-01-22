@@ -4,7 +4,7 @@ class DndClassesController < ApplicationController
     before_action :require_auth, only: [:create, :update]
 
     def index
-        @dndclasses = DndClass.all
+        @dndclasses = DndClass.includes(:features).all
         render "dnd_classes/index"
     end
     
@@ -64,7 +64,7 @@ class DndClassesController < ApplicationController
     end
 
     def get_class_by_id
-        @dndclass = DndClass.find_by(id: params[:id])
+        @dndclass = DndClass.includes(:features).find_by(id: params[:id])
     end
 
 end
