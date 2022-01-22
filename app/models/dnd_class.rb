@@ -14,7 +14,7 @@ class DndClass < ApplicationRecord
     presence: true
 
     validates :hitdie, format: { with: /\A1d[0-9]+$\z/, message: "must be in format '1d#'"}
-    validates :spellcasting, inclusion: { in: %w(full half halfplus third none), message: "must be one of: full, half, half+, third, none"}
+    validates :spellcasting, inclusion: { in: %w(full half half+ third none), message: "must be one of: full, half, half+, third, none"}
     validate :table_cols_validation
     validate :subclass_feature_levels_validation
 
