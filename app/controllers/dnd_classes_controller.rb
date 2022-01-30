@@ -19,7 +19,18 @@ class DndClassesController < ApplicationController
     def create
         @dndclass = DndClass.new(dndclass_params)
         if @dndclass.save
-            render "dnd_classes/show", status: :created
+            if (features_params[:features])
+                begin
+                    FeatureSource.update_feature_sources!(@dndclass, 'DndClass', features_params[:features])
+                    @dndclass = DndClass.includes(:features).find_by(id: @dndclass.id)
+                    render "dnd_classes/show", status: :created
+                rescue => exception
+                    puts exception
+                    render json: { errors: { features: 'contains one or more invalid features' } }, status: :unprocessable_entity
+                end
+            else
+                render "dnd_classes/show", status: :created
+            end
         else
             @errors = @dndclass.errors
             render "errors/show", status: :unprocessable_entity
@@ -28,7 +39,17 @@ class DndClassesController < ApplicationController
 
     def update
         if @dndclass.update(dndclass_params)
-            render "dnd_classes/show"
+            if (features_params[:features])
+                begin
+                    FeatureSource.update_feature_sources!(@dndclass, 'DndClass', features_params[:features])
+                    get_class_by_id
+                    render "dnd_classes/show"
+                rescue => exception
+                    render json: { errors: { features: 'contains one or more invalid features' } }, status: :unprocessable_entity
+                end
+            else
+                render "dnd_classes/show"
+            end
         else
             @errors = @dndclass.errors.full_messages
             render "errors/show", status: :unprocessable_entity
@@ -58,7 +79,14 @@ class DndClassesController < ApplicationController
             :spellcasting, 
             { table_cols: {} }, 
             :subclass_title, 
-            {subclass_feature_levels: [] },
+            {subclass_feature_levels: [] }
+        )
+    end
+
+    def features_params
+        params
+        .require(:dndclass)
+        .permit(
             { features: [
                 :id,
                 :level

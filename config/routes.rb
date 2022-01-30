@@ -16,9 +16,6 @@ Rails.application.routes.draw do
     :destroy
   ]
 
-  post '/features/:id/sources', to: 'features#create_source'
-  delete '/features/:id/sources', to: 'features#destroy_source'
-
   resources :classes, 
   controller: 'dnd_classes', 
   only: [

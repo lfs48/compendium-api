@@ -1,6 +1,6 @@
 class FeaturesController < ApplicationController
 
-    before_action :get_feature_by_id, only: [:show, :update, :destroy, :create_source, :destroy_source]
+    before_action :get_feature_by_id, only: [:show, :update, :destroy]
     before_action :require_auth, only: [:create, :update]
 
     def index
@@ -40,22 +40,6 @@ class FeaturesController < ApplicationController
         render "features/show"
     end
 
-    def create_source
-        @feature_source = FeatureSource.new(feature_source_params)
-        @feature_source.feature_id = @feature.id
-        if @feature_source.save
-            get_feature_by_id
-            render "features/show"
-        else
-            @errors = @feature_source.errors
-            render "errors/show", status: :unprocessable_entity
-        end
-    end
-
-    def destroy_source
-
-    end
-
     private
 
     def feature_params
@@ -71,16 +55,6 @@ class FeaturesController < ApplicationController
 
     def get_feature_by_id
         @feature = Feature.includes(:feature_sources).find_by(id: params[:id])
-    end
-
-    def feature_source_params
-        params
-        .require(:feature_source)
-        .permit(
-            :source_id,
-            :source_type,
-            :level
-        )
     end
 
 end
