@@ -48,7 +48,8 @@ class DndClass < ApplicationRecord
     end
 
     has_many :feature_sources,
-    as: :source
+    as: :source,
+    dependent: :delete_all
 
     has_many :features, 
     as: :source,

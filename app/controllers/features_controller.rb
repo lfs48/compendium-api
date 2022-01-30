@@ -70,7 +70,7 @@ class FeaturesController < ApplicationController
     end
 
     def get_feature_by_id
-        @feature = Feature..includes(:feature_sources).find_by(id: params[:id])
+        @feature = Feature.includes(:feature_sources).find_by(id: params[:id])
     end
 
     def feature_source_params

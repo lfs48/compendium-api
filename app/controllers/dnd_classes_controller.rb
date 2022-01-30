@@ -59,7 +59,10 @@ class DndClassesController < ApplicationController
             { table_cols: {} }, 
             :subclass_title, 
             {subclass_feature_levels: [] },
-            {features: [] }
+            { features: [
+                :id,
+                :level
+            ] }
         )
     end
 

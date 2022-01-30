@@ -19,8 +19,12 @@ class FeatureSource < ApplicationRecord
         less_than_or_equal_to: 20
     }
 
-    belongs_to :feature
-    belongs_to :source, polymorphic: true
+    belongs_to :feature, 
+    dependent: :destroy
+
+    belongs_to :source, 
+    polymorphic: true, 
+    dependent: :destroy
     
 
 end

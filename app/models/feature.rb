@@ -30,7 +30,8 @@ class Feature < ApplicationRecord
         message: "must be one of: action, quick action, reaction, passive, triggered, misc"
     }
 
-    has_many :feature_sources
+    has_many :feature_sources, 
+    dependent: :delete_all
 
     has_many :source_classes, 
     through: :feature_sources,
