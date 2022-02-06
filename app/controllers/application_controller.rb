@@ -5,10 +5,11 @@ class ApplicationController < ActionController::API
   end
 
   private
-  def token(user_id)
+  def token(user)
     exp = Time.now.to_i + (60*60*24*30)
     payload = { 
-      sub: user_id,
+      sub: user.id,
+      gm: user.gm,
       exp: exp
     }
     token = JWT.encode(payload, jwt_secret, 'HS256')

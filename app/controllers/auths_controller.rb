@@ -3,7 +3,7 @@ class AuthsController < ApplicationController
     def login
       @user = User.authenticate( user_params[:username], user_params[:password] )
       if @user
-        @token = token(@user.id)
+        @token = token(@user)
         render "auth/show", status: :ok
       else 
         @errors = {form: [ "Incorrect username or password" ] };
@@ -14,7 +14,7 @@ class AuthsController < ApplicationController
     def register
       @user = User.new(user_params)
       if @user.save
-          @token = token(@user.id)
+          @token = token(@user)
           render "auth/show", status: :created
       else
           @errors = @user.errors
