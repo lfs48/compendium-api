@@ -1,7 +1,7 @@
 class DndClassesController < ApplicationController
 
     before_action :get_class_by_id, only: [:show, :update, :destroy]
-    before_action :require_auth, only: [:create, :update]
+    before_action :require_gm, only: [:create, :update, :destroy]
 
     def index
         @dndclasses = DndClass.includes(:features).all

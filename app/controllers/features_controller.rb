@@ -1,7 +1,7 @@
 class FeaturesController < ApplicationController
 
     before_action :get_feature_by_id, only: [:show, :update, :destroy]
-    before_action :require_auth, only: [:create, :update]
+    before_action :require_gm, only: [:create, :update, :destroy]
 
     def index
         @features = Feature.includes(:feature_sources).all

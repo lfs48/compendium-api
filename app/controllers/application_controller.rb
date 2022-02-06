@@ -16,23 +16,37 @@ class ApplicationController < ActionController::API
     return token
   end
 
-  def client_has_valid_token?
-    !!current_user_id
-  end
-
-  def current_user_id
+  def decode_jwt
     begin
       token = request.headers["Authorization"]
       decoded_array = JWT.decode( token, jwt_secret, true, { algorithm: 'HS256' } )
       payload = decoded_array.first
-      return payload["sub"]
+      return payload
     rescue #JWT::VerificationError
       return nil
     end
   end
 
+  def current_user_id
+    decoded = decode_jwt
+    return decoded['sub']
+  end
+
+  def client_has_valid_token?
+    !!current_user_id
+  end
+
+  def client_is_gm?
+    decoded = decode_jwt
+    return decoded['gm']
+  end
+
   def require_auth
     render json: {error: 'Unauthorized'}, status: :unauthorized unless client_has_valid_token?
+  end
+
+  def require_gm
+    render json: {error: 'Unauthorized'}, status: :unauthorized unless client_is_gm?
   end
 
 end
