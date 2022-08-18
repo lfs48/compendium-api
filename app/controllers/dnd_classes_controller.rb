@@ -77,9 +77,7 @@ class DndClassesController < ApplicationController
             :skills, 
             { equipment: [] }, 
             :spellcasting, 
-            { table_cols: {} }, 
-            :subclass_title, 
-            {subclass_feature_levels: [] }
+            { table_cols: {} }
         )
     end
 

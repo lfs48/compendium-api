@@ -9,14 +9,12 @@ class DndClass < ApplicationRecord
     :saves, 
     :skills, 
     :equipment,
-    :spellcasting, 
-    :subclass_title,
+    :spellcasting,
     presence: true
 
     validates :hitdie, format: { with: /\A1d[0-9]+$\z/, message: "must be in format '1d#'"}
     validates :spellcasting, inclusion: { in: %w(full half half+ third none), message: "must be one of: full, half, half+, third, none"}
     validate :table_cols_validation
-    validate :subclass_feature_levels_validation
 
     def table_cols_validation
         unless table_cols.kind_of?(Hash)
@@ -35,15 +33,6 @@ class DndClass < ApplicationRecord
             unless value.length == 20
                 errors.add(:table_cols, "arrays must have length of 20")
             end
-        end
-    end
-
-    def subclass_feature_levels_validation
-        unless subclass_feature_levels.kind_of?(Array)
-            errors.add(:subclass_feature_levels, "must be an array")
-        end
-        unless subclass_feature_levels.all? { |el| el.kind_of?(Numeric) && el > 0 && el <= 20 }
-            errors.add(:subclass_feature_levels, "array values must be numbers between 1 and 20")
         end
     end
 

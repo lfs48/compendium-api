@@ -12,8 +12,6 @@ class CreateDndClasses < ActiveRecord::Migration[7.0]
       t.string :equipment, array: true, default: []
       t.string :spellcasting, null: false
       t.json :table_cols, default: {}
-      t.string :subclass_title, null: false
-      t.integer :subclass_feature_levels, array: true, default: []
       
       t.timestamps
     end

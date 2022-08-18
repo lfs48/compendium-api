@@ -28,8 +28,6 @@ ActiveRecord::Schema.define(version: 2022_02_06_203151) do
     t.string "equipment", default: [], array: true
     t.string "spellcasting", null: false
     t.json "table_cols", default: {}
-    t.string "subclass_title", null: false
-    t.integer "subclass_feature_levels", default: [], array: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

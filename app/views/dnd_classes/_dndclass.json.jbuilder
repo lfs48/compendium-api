@@ -10,9 +10,7 @@ json.extract! dndclass,
     :skills, 
     :equipment, 
     :spellcasting, 
-    :table_cols, 
-    :subclass_title, 
-    :subclass_feature_levels
+    :table_cols
     
 json.features do
     json.array! dndclass.feature_sources do |feature_source|
