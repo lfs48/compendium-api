@@ -12,7 +12,7 @@ class DndClass < ApplicationRecord
     :spellcasting,
     presence: true
 
-    validates :hitdie, format: { with: /\A1d[0-9]+$\z/, message: "must be in format '1d#'"}
+    validates :hitdie, format: { with: /\Ad[0-9]+$\z/, message: "must be in format 'd#'"}
     validates :spellcasting, inclusion: { in: %w(full half half+ third none), message: "must be one of: full, half, half+, third, none"}
     validate :table_cols_validation
 
