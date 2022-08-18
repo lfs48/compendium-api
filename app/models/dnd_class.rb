@@ -30,8 +30,8 @@ class DndClass < ApplicationRecord
             unless value.all? { |el| el.kind_of?(String) }
                 errors.add(:table_cols, "array values must be strings")
             end
-            unless value.length == 20
-                errors.add(:table_cols, "arrays must have length of 20")
+            unless value.length == 12
+                errors.add(:table_cols, "arrays must have length of 12")
             end
         end
     end
