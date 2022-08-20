@@ -3,7 +3,6 @@ class Feature < ApplicationRecord
     validates :name, 
     :description, 
     :kind, 
-    :category, 
     presence: true
 
     validates :kind, 
@@ -15,19 +14,6 @@ class Feature < ApplicationRecord
             "ribbon"
         ], 
         message: "must be one of: core, major, minor, ribbon"
-    }
-
-    validates :category, 
-    inclusion: { 
-        in: [
-            "action", 
-            "quick action", 
-            "reaction",
-            "passive",
-            "triggered",
-            "misc"
-        ], 
-        message: "must be one of: action, quick action, reaction, passive, triggered, misc"
     }
 
     has_many :feature_sources, 

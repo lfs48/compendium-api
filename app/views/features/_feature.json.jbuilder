@@ -2,8 +2,7 @@ json.extract! feature,
     :id, 
     :name,
     :description, 
-    :kind,
-    :category
+    :kind
 
 json.sources do
     json.array! feature.feature_sources do |feature_source|
