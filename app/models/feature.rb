@@ -8,12 +8,11 @@ class Feature < ApplicationRecord
     validates :kind, 
     inclusion: { 
         in: [
-            "core",
-            "major",
-            "minor",
-            "ribbon"
+            "standard",
+            "feat",
+            "boon"
         ], 
-        message: "must be one of: core, major, minor, ribbon"
+        message: "must be one of: standard, feat, boon"
     }
 
     has_many :feature_sources, 
