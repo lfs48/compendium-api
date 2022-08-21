@@ -15,6 +15,13 @@ class Feature < ApplicationRecord
         message: "must be one of: standard, feat, boon"
     }
 
+    validates :level, numericality: {
+        allow_nil: true,
+        only_integer: true,
+        greater_than: 0,
+        less_than_or_equal_to: 12
+    }
+
     has_many :feature_sources, 
     dependent: :delete_all
 

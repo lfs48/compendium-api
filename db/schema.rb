@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 2022_02_06_203151) do
     t.uuid "source_id", null: false
     t.uuid "feature_id", null: false
     t.string "source_type", null: false
-    t.integer "level"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["source_id", "feature_id"], name: "index_feature_sources_on_source_id_and_feature_id", unique: true
@@ -46,7 +45,7 @@ ActiveRecord::Schema.define(version: 2022_02_06_203151) do
     t.string "name", null: false
     t.string "description", null: false
     t.string "kind", null: false
-    t.string "category", null: false
+    t.integer "level"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

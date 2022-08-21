@@ -85,10 +85,7 @@ class DndClassesController < ApplicationController
         params
         .require(:dndclass)
         .permit(
-            { features: [
-                :id,
-                :level
-            ] }
+            { features: [] }
         )
     end
 
