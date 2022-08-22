@@ -1,3 +1,4 @@
+json.ignore_nil! true
 json.extract! feature, 
     :id, 
     :name,
