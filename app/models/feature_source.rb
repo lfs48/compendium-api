@@ -8,9 +8,10 @@ class FeatureSource < ApplicationRecord
     validates :source_type, 
     inclusion: { 
         in: [
-            "DndClass"
+            "DndClass",
+            "Race"
         ], 
-        message: "must be one of: DndClass"
+        message: "must be one of: DndClass, Race"
     }
 
     belongs_to :feature
