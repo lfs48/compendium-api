@@ -46,7 +46,7 @@ class ApplicationController < ActionController::API
   end
 
   def require_gm
-    render json: {error: 'Unauthorized'}, status: :unauthorized unless client_is_gm?
+    render json: {error: 'Unauthorized'}, status: :unauthorized unless client_has_valid_token? && client_is_gm?
   end
 
 end
