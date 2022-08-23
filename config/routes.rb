@@ -26,4 +26,13 @@ Rails.application.routes.draw do
     :destroy
   ]
 
+  resources :races,
+  only: [
+    :index,
+    :show, 
+    :create, 
+    :update, 
+    :destroy
+  ]
+
 end
