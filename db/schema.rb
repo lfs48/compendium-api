@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2022_08_22_151407) do
   create_table "races", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "description", null: false
-    t.string "type", null: false
+    t.string "creature_type", null: false
     t.string "size", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

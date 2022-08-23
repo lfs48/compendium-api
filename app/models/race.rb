@@ -2,7 +2,7 @@ class Race < ApplicationRecord
 
     validates :name, 
     :description, 
-    :type,
+    :creature_type,
     :size,
     presence: true
 
