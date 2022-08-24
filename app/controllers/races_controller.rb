@@ -68,9 +68,7 @@ class RacesController < ApplicationController
         .require(:race)
         .permit(
             :name, 
-            :description, 
-            :size,
-            :creature_type
+            :description
         )
     end
 
