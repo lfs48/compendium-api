@@ -1,9 +1,7 @@
 class Race < ApplicationRecord
 
     validates :name, 
-    :description, 
-    :creature_type,
-    :size,
+    :description,
     presence: true
 
     has_many :feature_sources,
