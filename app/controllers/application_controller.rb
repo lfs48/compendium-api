@@ -33,7 +33,12 @@ class ApplicationController < ActionController::API
   end
 
   def client_has_valid_token?
-    !!current_user_id
+    begin
+      user = User.find(current_user_id)
+      return !!user
+    rescue
+      return false
+    end
   end
 
   def client_is_gm?
