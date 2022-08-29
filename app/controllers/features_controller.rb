@@ -47,8 +47,7 @@ class FeaturesController < ApplicationController
         .require(:feature)
         .permit(
             :name, 
-            :description, 
-            :kind,
+            :description,
             :level
         )
     end

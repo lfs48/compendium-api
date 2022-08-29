@@ -1,19 +1,8 @@
 class Feature < ApplicationRecord
 
     validates :name, 
-    :description, 
-    :kind, 
+    :description,
     presence: true
-
-    validates :kind, 
-    inclusion: { 
-        in: [
-            "standard",
-            "feat",
-            "boon"
-        ], 
-        message: "must be one of: standard, feat, boon"
-    }
 
     validates :level, numericality: {
         allow_nil: true,
