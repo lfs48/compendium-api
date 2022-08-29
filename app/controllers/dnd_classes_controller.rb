@@ -4,7 +4,7 @@ class DndClassesController < ApplicationController
     before_action :require_gm, only: [:create, :update, :destroy]
 
     def index
-        @dndclasses = DndClass.includes(:features).all
+        @dndclasses = DndClass.includes(:features, :feats).all
         render "dnd_classes/index"
     end
     
@@ -22,7 +22,7 @@ class DndClassesController < ApplicationController
             if (features_params[:features])
                 begin
                     FeatureSource.update_feature_sources!(@dndclass, 'DndClass', features_params[:features])
-                    @dndclass = DndClass.includes(:features).find_by(id: @dndclass.id)
+                    @dndclass = DndClass.includes(:features, :feats).find_by(id: @dndclass.id)
                     render "dnd_classes/show", status: :created
                 rescue => exception
                     puts exception
@@ -90,7 +90,7 @@ class DndClassesController < ApplicationController
     end
 
     def get_class_by_id
-        @dndclass = DndClass.includes(:features).find_by(id: params[:id])
+        @dndclass = DndClass.includes(:features, :feats).find_by(id: params[:id])
     end
 
 end
