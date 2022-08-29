@@ -35,4 +35,13 @@ Rails.application.routes.draw do
     :destroy
   ]
 
+  resources :feats,
+  only: [
+    :index,
+    :show,
+    :create,
+    :update,
+    :destroy
+  ]
+
 end
