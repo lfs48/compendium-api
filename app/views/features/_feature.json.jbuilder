@@ -2,8 +2,7 @@ json.ignore_nil! true
 json.extract! feature, 
     :id, 
     :name,
-    :description, 
-    :kind,
+    :description,
     :level
 
 json.sources do
