@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2022_09_06_014723) do
   create_table "boons", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "description", null: false
+    t.string "prereq"
     t.uuid "source_id"
     t.string "source_type"
     t.datetime "created_at", precision: 6, null: false
