@@ -81,7 +81,7 @@ class RacesController < ApplicationController
     end
 
     def get_race_by_id
-        @race = Race.includes(:features).find_by(id: params[:id])
+        @race = Race.includes(:features, :boons).find_by(id: params[:id])
     end
 
 end

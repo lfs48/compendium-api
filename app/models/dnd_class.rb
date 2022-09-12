@@ -46,4 +46,7 @@ class DndClass < ApplicationRecord
 
     has_many :feats
 
+    has_many :boons,
+    as: :source
+
 end
