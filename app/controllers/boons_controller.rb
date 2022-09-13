@@ -4,7 +4,7 @@ class BoonsController < ApplicationController
     before_action :require_gm, only: [:create, :update, :destroy]
 
     def index
-        @boons = Boon.all
+        @boons = Boon.includes(:source).all
         render "boons/index"
     end
 
