@@ -4,7 +4,7 @@ class RacesController < ApplicationController
     before_action :require_gm, only: [:create, :update, :destroy]
 
     def index
-        @races = Race.includes(:features).all
+        @races = Race.includes(:features, :boons).all
         render "races/index"
     end
     

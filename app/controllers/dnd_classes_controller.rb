@@ -4,7 +4,7 @@ class DndClassesController < ApplicationController
     before_action :require_gm, only: [:create, :update, :destroy]
 
     def index
-        @dndclasses = DndClass.includes(:features, :feats).all
+        @dndclasses = DndClass.includes(:features, :feats, :boons).all
         render "dnd_classes/index"
     end
     
