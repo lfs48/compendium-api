@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_06_014723) do
+ActiveRecord::Schema.define(version: 2023_01_04_153654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -70,6 +70,23 @@ ActiveRecord::Schema.define(version: 2022_09_06_014723) do
   create_table "races", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "description", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "spells", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description", null: false
+    t.string "rank", null: false
+    t.boolean "verbal", default: true
+    t.boolean "somatic", default: true
+    t.boolean "material", default: true
+    t.string "material_description"
+    t.boolean "concentration", default: false
+    t.string "duration", null: false
+    t.string "range", null: false
+    t.string "casting_time", null: false
+    t.string "higher_level"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
