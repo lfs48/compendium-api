@@ -49,4 +49,7 @@ class DndClass < ApplicationRecord
     has_many :boons,
     as: :source
 
+    has_many :spells,
+    through: :spell_classes
+
 end
