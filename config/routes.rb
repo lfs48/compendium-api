@@ -53,4 +53,13 @@ Rails.application.routes.draw do
     :destroy
   ]
 
+  resources :spells,
+  only: [
+    :index,
+    :show,
+    :create,
+    :update,
+    :destroy
+  ]
+
 end

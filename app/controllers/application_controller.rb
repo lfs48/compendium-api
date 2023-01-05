@@ -18,7 +18,7 @@ class ApplicationController < ActionController::API
 
   def decode_jwt
     begin
-      token = request.headers["Authorization"]
+      token = request.headers["Authorization"].split(' ')[1]
       decoded_array = JWT.decode( token, jwt_secret, true, { algorithm: 'HS256' } )
       payload = decoded_array.first
       return payload
