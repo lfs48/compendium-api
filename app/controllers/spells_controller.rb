@@ -63,7 +63,7 @@ class SpellsController < ApplicationController
     end
 
     def get_spell_by_id
-        @spell = Spell.find_by(id: params[:id])
+        @spell = Spell.includes(:dnd_classes).find_by(id: params[:id])
     end
 
 end

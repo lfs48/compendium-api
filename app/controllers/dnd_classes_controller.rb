@@ -90,7 +90,7 @@ class DndClassesController < ApplicationController
     end
 
     def get_class_by_id
-        @dndclass = DndClass.includes(:features, :feats, :boons).find_by(id: params[:id])
+        @dndclass = DndClass.includes(:features, :feats, :boons, :spells).find_by(id: params[:id])
     end
 
 end
