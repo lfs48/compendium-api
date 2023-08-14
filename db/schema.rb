@@ -16,16 +16,6 @@ ActiveRecord::Schema.define(version: 2023_01_04_165150) do
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "boons", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "name", null: false
-    t.string "description", null: false
-    t.string "prereq"
-    t.uuid "source_id"
-    t.string "source_type"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "dnd_classes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "description", null: false
@@ -38,14 +28,6 @@ ActiveRecord::Schema.define(version: 2023_01_04_165150) do
     t.string "equipment", default: [], array: true
     t.string "spellcasting", null: false
     t.json "table_cols", default: {}
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "feats", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "name", null: false
-    t.string "description", null: false
-    t.uuid "dnd_class_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

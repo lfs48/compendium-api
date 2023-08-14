@@ -11,7 +11,7 @@ class Feature < ApplicationRecord
         less_than_or_equal_to: 12
     }
 
-    validates :kind, , inclusion: { in: %w(core major minor), message: "must be one of: core major minor"}
+    validates :kind, inclusion: { in: %w(core major minor), message: "must be one of: core major minor"}
 
     has_many :feature_sources, 
     dependent: :delete_all

@@ -12,7 +12,4 @@ class Race < ApplicationRecord
     as: :source,
     through: :feature_sources
 
-    has_many :boons,
-    as: :source
-
 end

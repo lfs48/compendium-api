@@ -4,7 +4,7 @@ class DndClassesController < ApplicationController
     before_action :require_gm, only: [:create, :update, :destroy]
 
     def index
-        @dndclasses = DndClass.includes(:features, :feats, :boons).all
+        @dndclasses = DndClass.includes(:features).all
         render "dnd_classes/index"
     end
     
@@ -90,7 +90,7 @@ class DndClassesController < ApplicationController
     end
 
     def get_class_by_id
-        @dndclass = DndClass.includes(:features, :feats, :boons, :spells).find_by(id: params[:id])
+        @dndclass = DndClass.includes(:features, :spells).find_by(id: params[:id])
     end
 
 end
