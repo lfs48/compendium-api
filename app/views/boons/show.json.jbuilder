@@ -1,1 +1,0 @@
-json.partial! "boons/boon", boon: @boon

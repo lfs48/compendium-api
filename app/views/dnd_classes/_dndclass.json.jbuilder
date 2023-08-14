@@ -14,8 +14,4 @@ json.extract! dndclass,
     
 json.features dndclass.feature_sources.map { |feature_source| feature_source.feature_id }
 
-json.feats dndclass.feats.map { |feat| feat.id }
-
-json.boons dndclass.boons.map { |boon| boon.id }
-
 json.spells dndclass.spells.map { |spell| spell.id }
