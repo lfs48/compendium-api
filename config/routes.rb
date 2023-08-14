@@ -35,24 +35,6 @@ Rails.application.routes.draw do
     :destroy
   ]
 
-  resources :feats,
-  only: [
-    :index,
-    :show,
-    :create,
-    :update,
-    :destroy
-  ]
-
-  resources :boons,
-  only: [
-    :index,
-    :show,
-    :create,
-    :update,
-    :destroy
-  ]
-
   resources :spells,
   only: [
     :index,
