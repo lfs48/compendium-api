@@ -4,7 +4,7 @@ class RacesController < ApplicationController
     before_action :require_gm, only: [:create, :update, :destroy]
 
     def index
-        @races = Race.includes(:features, :boons).all
+        @races = Race.includes(:features).all
         render "races/index"
     end
     
@@ -21,7 +21,7 @@ class RacesController < ApplicationController
         if @race.save
             if (features_params[:features])
                 begin
-                    FeatureSource.update_feature_sources!(@race, 'Race', features_params[:features])
+                    FeatureSource.update_source_features!(@race, 'Race', features_params[:features])
                     @race = Race.includes(:features).find_by(id: @race.id)
                     render "races/show", status: :created
                 rescue => exception
@@ -41,7 +41,7 @@ class RacesController < ApplicationController
         if @race.update(race_params)
             if (features_params[:features])
                 begin
-                    FeatureSource.update_feature_sources!(@race, 'Race', features_params[:features])
+                    FeatureSource.update_source_features!(@race, 'Race', features_params[:features])
                     get_race_by_id
                     render "races/show"
                 rescue => exception
@@ -81,7 +81,7 @@ class RacesController < ApplicationController
     end
 
     def get_race_by_id
-        @race = Race.includes(:features, :boons).find_by(id: params[:id])
+        @race = Race.includes(:features).find_by(id: params[:id])
     end
 
 end
