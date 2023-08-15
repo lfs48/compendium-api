@@ -21,8 +21,8 @@ class DndClassesController < ApplicationController
         if @dndclass.save
             if (features_params[:features])
                 begin
-                    FeatureSource.update_feature_sources!(@dndclass, 'DndClass', features_params[:features])
-                    @dndclass = DndClass.includes(:features, :feats).find_by(id: @dndclass.id)
+                    FeatureSource.update_source_features!(@dndclass, 'DndClass', features_params[:features])
+                    @dndclass = DndClass.includes(:features).find_by(id: @dndclass.id)
                     render "dnd_classes/show", status: :created
                 rescue => exception
                     puts exception
@@ -41,7 +41,7 @@ class DndClassesController < ApplicationController
         if @dndclass.update(dndclass_params)
             if (features_params[:features])
                 begin
-                    FeatureSource.update_feature_sources!(@dndclass, 'DndClass', features_params[:features])
+                    FeatureSource.update_source_features!(@dndclass, 'DndClass', features_params[:features])
                     get_class_by_id
                     render "dnd_classes/show"
                 rescue => exception

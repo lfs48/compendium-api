@@ -19,6 +19,8 @@ class FeaturesController < ApplicationController
     def create
         @feature = Feature.new(feature_params)
         if @feature.save
+            FeatureSource.update_feature_sources!(@feature, source_params[:sources])
+            @feature = Feature.find_by(id: @feature.id)
             render "features/show", status: :created
         else
             @errors = @feature.errors
@@ -28,6 +30,8 @@ class FeaturesController < ApplicationController
 
     def update
         if @feature.update(feature_params)
+            FeatureSource.update_feature_sources!(@feature, source_params[:sources])
+            get_feature_by_id
             render "features/show"
         else
             @errors = @feature.errors.full_messages
@@ -51,6 +55,14 @@ class FeaturesController < ApplicationController
             :level,
             :kind,
             :prereq
+        )
+    end
+
+    def source_params
+        params
+        .require(:feature)
+        .permit(
+            {sources: [:id, :source_type]}
         )
     end
 
