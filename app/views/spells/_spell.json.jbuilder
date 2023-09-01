@@ -3,14 +3,11 @@ json.extract! spell,
     :name,
     :description, 
     :rank,
-    :verbal,
-    :somatic,
     :material,
-    :material_description,
     :concentration,
     :duration,
     :range,
     :casting_time,
-    :higher_level
+    :upcast
 
 json.dnd_class_ids spell.dnd_classes.map { |dndclass| dndclass.id }

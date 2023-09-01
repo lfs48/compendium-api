@@ -4,7 +4,7 @@ class Spell < ApplicationRecord
     :description, 
     :rank, 
     :duration, 
-    :range, 
+    :range,
     :casting_time,
     presence: true
 

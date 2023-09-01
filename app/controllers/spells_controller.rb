@@ -49,15 +49,12 @@ class SpellsController < ApplicationController
             :name, 
             :description, 
             :rank,
-            :verbal,
-            :somatic,
             :material,
-            :material_description,
             :concentration,
             :duration,
             :range,
             :casting_time,
-            :higher_level,
+            { upcast: [] },
             { dnd_class_ids: [] }
         )
     end
