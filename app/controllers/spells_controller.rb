@@ -55,6 +55,7 @@ class SpellsController < ApplicationController
             :range,
             :casting_time,
             { upcast: [] },
+            { aspects: [] },
             { dnd_class_ids: [] }
         )
     end
