@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_26_221541) do
+ActiveRecord::Schema.define(version: 2023_08_31_202540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -82,15 +82,12 @@ ActiveRecord::Schema.define(version: 2023_08_26_221541) do
     t.string "name", null: false
     t.text "description", null: false
     t.string "rank", null: false
-    t.boolean "verbal", default: true
-    t.boolean "somatic", default: true
-    t.boolean "material", default: true
-    t.string "material_description"
+    t.string "material"
     t.boolean "concentration", default: false
     t.string "duration", null: false
     t.string "range", null: false
     t.string "casting_time", null: false
-    t.string "higher_level"
+    t.string "upcast", default: [], array: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

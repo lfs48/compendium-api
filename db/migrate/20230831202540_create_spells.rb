@@ -4,15 +4,12 @@ class CreateSpells < ActiveRecord::Migration[7.0]
       t.string :name, null: false
       t.text :description, null: false
       t.string :rank, null: false
-      t.boolean :verbal, default: true
-      t.boolean :somatic, default: true
-      t.boolean :material, default: true
-      t.string :material_description
+      t.string :material
       t.boolean :concentration, default: false
       t.string :duration, null: false
       t.string :range, null: false
       t.string :casting_time, null: false
-      t.string :higher_level
+      t.string :upcast, array: true, default: []
 
       t.timestamps
     end
