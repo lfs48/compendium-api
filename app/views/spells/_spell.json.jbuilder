@@ -7,6 +7,7 @@ json.extract! spell,
     :concentration,
     :duration,
     :range,
+    :targets,
     :casting_time,
     :upcast,
     :aspects

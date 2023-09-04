@@ -53,6 +53,7 @@ class SpellsController < ApplicationController
             :concentration,
             :duration,
             :range,
+            :targets,
             :casting_time,
             { upcast: [] },
             { aspects: [] },

@@ -8,8 +8,10 @@ class CreateSpells < ActiveRecord::Migration[7.0]
       t.boolean :concentration, default: false
       t.string :duration, null: false
       t.string :range, null: false
+      t.string :targets, null: false
       t.string :casting_time, null: false
       t.string :upcast, array: true, default: []
+      t.string :aspects, array: true, default: []
 
       t.timestamps
     end

@@ -5,6 +5,7 @@ class Spell < ApplicationRecord
     :rank, 
     :duration, 
     :range,
+    :targets,
     :casting_time,
     presence: true
 
