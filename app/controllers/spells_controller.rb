@@ -56,13 +56,12 @@ class SpellsController < ApplicationController
             :targets,
             :casting_time,
             { upcast: [] },
-            { aspects: [] },
-            { dnd_class_ids: [] }
+            { aspects: [] }
         )
     end
 
     def get_spell_by_id
-        @spell = Spell.includes(:dnd_classes).find_by(id: params[:id])
+        @spell = Spell.find_by(id: params[:id])
     end
 
 end

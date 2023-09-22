@@ -70,14 +70,6 @@ ActiveRecord::Schema.define(version: 2023_08_31_202540) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "spell_classes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "dnd_class_id", null: false
-    t.uuid "spell_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["dnd_class_id", "spell_id"], name: "index_spell_classes_on_dnd_class_id_and_spell_id", unique: true
-  end
-
   create_table "spells", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.text "description", null: false
