@@ -2,17 +2,15 @@ class DndClass < ApplicationRecord
 
     validates :name, 
     :description, 
-    :hitdie, 
+    :hp, 
     :armor, 
-    :weapons, 
-    :tools, 
-    :saves, 
+    :weapons,
+    :defenses, 
     :skills, 
     :equipment,
     :spellcasting,
     presence: true
 
-    validates :hitdie, format: { with: /\Ad[0-9]+$\z/, message: "must be in format 'd#'"}
     validates :spellcasting, inclusion: { in: %w(full half third none), message: "must be one of: full, half, third, none"}
     validate :table_cols_validation
 
