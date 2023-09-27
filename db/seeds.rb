@@ -15,7 +15,7 @@ classes = [
         weapons: "All melee and ranged weapons",
         defenses: "Fortitude, Reflex, Freedom, and Focus",
         skills: "Athletics, plus any four other skills",
-        equipment: "-Two light melee weapons OR a medium melee weapon and a shield OR a heavy melee weapon \n -A short-range or long-range ranged weapon \n -A suit of light or heavy armor",
+        equipment: "- Two light melee weapons OR a medium melee weapon and a shield OR a heavy melee weapon \n\n - A short-range or long-range ranged weapon \n\n - A suit of light or heavy armor",
         spellcasting: "none",
         table_cols: {
             "Superiority Die": [
@@ -36,13 +36,13 @@ classes = [
     },
     {
         name: "Paladin",
-        description: "A zealous warrior who has devoted themselves to a righteous cause.",
+        description: "A zealous champion who has devoted themselves to a righteous cause.",
         hp: "10",
         armor: "Heavy armor and shields",
         weapons: "Medium and heavy melee weapons",
         defenses: "Fortitude, Focus, Will, and Perserverance",
         skills: "Command, plus any three other skills",
-        equipment: "-A medium melee weapon and a shield OR a heavy melee weapon \n -A suit of heavy armor",
+        equipment: "- A medium melee weapon and a shield OR a heavy melee weapon \n\n - A suit of heavy armor",
         spellcasting: "half",
         table_cols: {
             "Smite Damage": [
@@ -69,7 +69,7 @@ classes = [
         weapons: "None",
         defenses: "Reflex, Focus, and Will",
         skills: "Arcana, plus any three other skills",
-        equipment: "-A light or medium melee weapon \n -An arcane focus",
+        equipment: "- A light or medium melee weapon \n\n - An arcane focus",
         spellcasting: "full"
     }
 ]
