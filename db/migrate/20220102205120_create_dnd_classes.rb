@@ -8,7 +8,7 @@ class CreateDndClasses < ActiveRecord::Migration[7.0]
       t.string :weapons, null: false
       t.string :defenses, null: false
       t.string :skills, null: false
-      t.string :equipment, array: true, default: []
+      t.string :equipment, null: false
       t.string :spellcasting, null: false
       t.json :table_cols, default: {}
       

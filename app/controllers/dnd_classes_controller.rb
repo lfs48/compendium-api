@@ -74,7 +74,7 @@ class DndClassesController < ApplicationController
             :weapons, 
             :defenses, 
             :skills, 
-            { equipment: [] }, 
+            :equipment,
             :spellcasting, 
             { table_cols: {} }
         )

@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2023_08_31_202540) do
     t.string "weapons", null: false
     t.string "defenses", null: false
     t.string "skills", null: false
-    t.string "equipment", default: [], array: true
+    t.string "equipment", null: false
     t.string "spellcasting", null: false
     t.json "table_cols", default: {}
     t.datetime "created_at", precision: 6, null: false
