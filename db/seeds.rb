@@ -77,6 +77,23 @@ mage = DndClass.create!({
     spellcasting: "full"
 })
 
+Race.destroy_all
+
+human = Race.create!({
+    name: "Human",
+    description: "The most common and populous race, humans can be found almost everywhere and bear close resemblance to the humans of our own world. Though they have no inherent supernatural abilities, they possess limitless potential."
+})
+
+elf = Race.create!({
+    name: "Elf",
+    description: "Elves are a magical people of otherworldly grace, who have walked among the ancient places of the world since its dawn."
+})
+
+dwarf = Race.create!({
+    name: "Dwarf",
+    description: "Dwarves are a stout and hardy people who spring from the deep places on the world."
+})
+
 Feature.destroy_all
 
 combat_superiority = Feature.create!({
@@ -186,6 +203,54 @@ arcane_initiate = Feature.create!({
     kind: 'minor'
 })
 
+human_versatility = Feature.create!({
+    name: "Human Versatility",
+    description: "You're proficient in one skill of your choice. When you complete downtime, you can swap this skill with a different one.",
+    kind: 'core'
+})
+
+limitless_potential = Feature.create!({
+    name: "Limitless Potential",
+    description: "You gain one boon of your choice.",
+    kind: 'core'
+})
+
+fae_magic = Feature.create!({
+    name: "Fae Magic",
+    description: "You can cast *illuminate* innately. When cast this way, you can only choose the *dancing lights* option. \n\n Additionally, you can cast *faerie fire* innately once per rest. \n\n If you don't already have a spellcasting feature, use Charisma as your spellcasting attribute.",
+    kind: 'core'
+})
+
+trance = Feature.create!({
+    name: "Trance",
+    description: "Instead of sleeping, you enter a state of deep meditation called a *trance*. While tracing, you remain aware of your surroundings and can awaken at will. \n\n Effects that would forcibly put you to sleep have no effect on you.",
+    kind: 'core'
+})
+
+starsight = Feature.create!({
+    name: "Starsight",
+    description: "You can see in natural starlight as if it were bright light.",
+    kind: 'core'
+})
+
+iron_liver = Feature.create!({
+    name: "Iron Liver",
+    description: "You have resistance to toxic damage and advantage on any checks to prevent being poisoned or end poisoning on yourself.",
+    kind: 'core'
+})
+
+mountain_roots = Feature.create!({
+    name: "Mountain Roots",
+    description: "Once per rest, if you would be knocked prone or forcibly moved, you can choose not to be.",
+    kind: 'core'
+})
+
+tremorsense = Feature.create!({
+    name: "Tremorsense",
+    description: "You can perceive an area within your reach through vibrations along the ground, without requiring use of your other senses. Your feet must be on solid ground to benefit from this sense.",
+    kind: 'core'
+})
+
 feature_sources = [
     {
         feature_id: combat_superiority.id,
@@ -265,6 +330,46 @@ feature_sources = [
         feature_id: malleable_illusions.id,
         source_id: mage.id,
         source_type: 'DndClass'
+    },
+    {
+        feature_id: human_versatility.id,
+        source_id: human.id,
+        source_type: 'Race'
+    },
+    {
+        feature_id: limitless_potential.id,
+        source_id: human.id,
+        source_type: 'Race'
+    },
+    {
+        feature_id: fae_magic.id,
+        source_id: elf.id,
+        source_type: 'Race'
+    },
+    {
+        feature_id: trance.id,
+        source_id: elf.id,
+        source_type: 'Race'
+    },
+    {
+        feature_id: starsight.id,
+        source_id: elf.id,
+        source_type: 'Race'
+    },
+    {
+        feature_id: iron_liver.id,
+        source_id: dwarf.id,
+        source_type: 'Race'
+    },
+    {
+        feature_id: mountain_roots.id,
+        source_id: dwarf.id,
+        source_type: 'Race'
+    },
+    {
+        feature_id: tremorsense.id,
+        source_id: dwarf.id,
+        source_type: 'Race'
     }
 ]
 
