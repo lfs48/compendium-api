@@ -375,3 +375,184 @@ feature_sources = [
 
 FeatureSource.destroy_all
 FeatureSource.create!(feature_sources)
+
+spells = [
+    {
+        name: "Spark",
+        aspects: ["elemental","fire"],
+        rank: '0',
+        range: "Short",
+        targets: "1 entity",
+        casting_time: "1 action",
+        duration: "Instantaneous",
+        description: "A small flame sparks between your fingers. Make a spell attack vs Reflex. On a hit, the target takes 1/2/3 burning damage."
+    },
+    {
+        name: "Zap",
+        aspects: ["elemental","lightning"],
+        rank: '0',
+        range: "Short",
+        targets: "1 entity",
+        casting_time: "1 action",
+        duration: "Instantaneous",
+        description: "A jolt of electricity arcs between you and the target. Make a spell attack vs Fortitude. On a hit, the target takes 1/2/3 shocking damage."
+    },
+    {
+        name: "Mage Hand",
+        aspects: ["arcane","conjuration"],
+        rank: '0',
+        range: "Short",
+        targets: "A point in space",
+        casting_time: "1 action",
+        duration: "1 minute",
+        concentration: true,
+        description: "You create a magical disembodied hand at the target location. The hand mimics any movements you perform with your own hand."
+    },
+    {
+        name: "Minor Illusion",
+        aspects: ["arcane","illusion"],
+        rank: '0',
+        range: "Short",
+        targets: "N/A",
+        casting_time: "1 action",
+        duration: "1 minute",
+        concentration: true,
+        description: "You create an illusory image or sound within range. \n\n ***Image.*** The image is static and produces no sound, odor, or other sensation. \n\n ***Sound.*** The sound can range in volume from a whisper to a shout. The sound can either be instantaneous, or a repetitive sound that loops for the duration."
+    },
+    {
+        name: "Fireball",
+        aspects: ["elemental","fire"],
+        rank: '1',
+        range: "Long",
+        targets: "Small area (Up to 2 entities)",
+        casting_time: "1 action",
+        duration: "Instantaneous",
+        description: "You launch a ball of explosive flames at the target area. Make a spell attack vs Reflex. On a hit, deal 2/4/6 burning damage.",
+        upcast: [
+            "Increase the damage by 1 for each slot rank above 1st."
+        ]
+    },
+    {
+        name: "Magic Missile",
+        aspects: ["arcane"],
+        rank: '1',
+        range: "Long",
+        targets: "1 or more entities",
+        casting_time: "1 action",
+        duration: "Instantaneous",
+        description: "You fire three missiles, each of which deals 1 ethereal damage to a target (no attack roll required). You can target the same entity with multiple missiles.",
+        upcast: [
+            "Fire two additional missiles for each slot rank above 1st."
+        ]
+    },
+    {
+        name: "Mend Wounds",
+        aspects: ["holy"],
+        rank: '1',
+        range: "Touch",
+        targets: "One willing creature",
+        casting_time: "1 action",
+        duration: "Instantaneous",
+        description: "Healing energy radiates from your hands. The target receives 4 points of healing.",
+        upcast: [
+            "The healing is increased by 4 for each slot rank above 1st."
+        ]
+    },
+    {
+        name: "Wildtongue",
+        aspects: ["nature"],
+        rank: '1',
+        range: "N/A",
+        targets: "Self",
+        casting_time: "1 action",
+        duration: "10 minutes",
+        concentration: true,
+        description: "For the duration, you gain the ability to comprehend and verbally communicate with beasts. Beasts you interact with will understand you aren't a threat to them, unless they have specific reason to believe otherwise.",
+        upcast: [
+            "You also gain the ability to communicate with plants and fungi."
+        ]
+    },
+    {
+        name: "Flight",
+        aspects: ["arcane", "augmentation"],
+        rank: '2',
+        range: "Touch",
+        targets: "One willing creature",
+        casting_time: "1 action",
+        duration: "1 minute",
+        description: "The target is able to fly for the duration.",
+        upcast: [
+            "You can target an additonal creature for each slot rank above 2nd. In addition, the  duration is increased to 10 minutes.",
+            "The duration is increased to 1 hour."
+        ]
+    },
+    {
+        name: "Hypnotic Pattern",
+        aspects: ["arcane", "enchantment"],
+        rank: '2',
+        range: "Short",
+        targets: "Medium area (Up to four creatures)",
+        casting_time: "1 action",
+        duration: "1 minute",
+        concentration: true,
+        description: "A hypnotic pattern of colors mesmerizes creatures in the targeted area. Make a spell attack vs Focus. On a successful hit, a target is distracted for the duration (Focus check at end of turn and on taking damage ends). While distracted this way, they use their movement and action to chase and grab at the the lights."
+    },
+    {
+        name: "Protection from Elements",
+        aspects: ["arcane", "abjuration", "elemental"],
+        rank: '2',
+        range: "Touch",
+        targets: "One willing creature",
+        casting_time: "1 action",
+        duration: "10 minutes",
+        concentration: true,
+        description: "Choose a damage type from: burning, dousing, freezing, or shocking. The target has resistance to that damage type for the duration.",
+        upcast: [
+            "The maximum number of targets is doubled for each slot rank above 2nd.",
+            "The targets are immune to the chosen damage type."
+        ]
+    },
+    {
+        name: "Scrying",
+        aspects: ["arcane","divination"],
+        rank: '3',
+        range: "Unlimited",
+        targets: "One entity or location you name",
+        casting_time: "10 minutes",
+        duration: "10 minutes",
+        concentration: true,
+        material: "A mirror, pool of water, or other reflective surface at least 6'' across",
+        description: "You project an image of the target on a reflective surface, allowing you to observe them for the duration. Through the projection, you can see and hear the target and their nearby surroundings. If the target moves, the projection follows them.",
+        upcast: [
+            "The duration becomes indefinite (i.e. for as long as you concentrate)."
+        ]
+    },
+    {
+        name: "Tree Stride",
+        aspects: ["nature"],
+        rank: '3',
+        range: "N/A",
+        targets: "Self",
+        casting_time: "1 action",
+        duration: "1 minute",
+        concentration: true,
+        description: "For the duration, you can enter a living tree and move from inside it to inside another tree within a long distance. Doing so expends one point of movement that round.",
+        upcast: [
+            "You can bring a willing creature you touch through with you."
+        ]
+    },
+    {
+        name: "Meteor",
+        aspects: ["arcane"],
+        rank: '4',
+        range: "Sight",
+        targets: "A zone",
+        casting_time: "1 action",
+        duration: "Instantaneous",
+        material: "A meteorite fragment",
+        description: "You sway the course of the stars, causing a meteor to hurtle towards the target location. The GM secretly rolls a d6; in that many rounds, the meteor will impact. Each entity in the zone when it lands takes 15 burning and 15 crushing damage. \n\n You must be under an open sky to cast this spell; otherwise it has no effect. The meteor itself is nonmagical and independant of the spell once its course is set."
+    }
+]
+
+Spell.destroy_all
+Spell.create!(spells)
