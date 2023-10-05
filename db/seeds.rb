@@ -556,3 +556,65 @@ spells = [
 
 Spell.destroy_all
 Spell.create!(spells)
+
+items = [
+    {
+        name: "Rope Coil",
+        description: "A 50 foot length of coiled hemp rope.",
+        kind: "commodity",
+        rarity: "common",
+        bulk: "moderate",
+        value: "5"
+    },
+    {
+        name: "Lantern",
+        description: "A fuel-burning lantern, which produces bright light out to a long distance when lit.",
+        kind: "tool",
+        rarity: "common",
+        bulk: "bulky",
+        value: "10"
+    },
+    {
+        name: "Shortsword",
+        description: "An edged light melee weapon.",
+        kind: "weapon",
+        rarity: "common",
+        bulk: "moderate",
+        value: "10"
+    },
+    {
+        name: "Leather armor",
+        description: "A suit of light armor consisting of a boiled leather vest, pants, greaves and vambraces.",
+        kind: "armor",
+        rarity: "common",
+        bulk: "moderate",
+        value: "15"
+    },
+    {
+        name: "Potion of Healing, Minor",
+        description: "A vial of viscuous candy-red liquid. When consumed, the drinker receives 5 points of healing.",
+        kind: "consumable",
+        rarity: "uncommon",
+        bulk: "slight",
+        value: "4d4×5"
+    },
+    {
+        name: "Belt of Giant Strength",
+        description: "A thick leather belt studded with iron beads. Its buckle is adorned with the face of a giant surrounded by runes. \n\n While wearing this belt, you get a d10 bonus die to all Strength checks.",
+        kind: "gear",
+        rarity: "rare",
+        bulk: "moderate",
+        value: "10d8×50"
+    },
+    {
+        name: "Vorpal Sword",
+        description: "A longsword of simple but elegant design, with an undecorated black hilt and a dark gray blade with crimson edges. \n\n This is a magical edged medium melee weapon of supreme quality (+5). When you score a critical hit with this weapon, roll a d20. If it lands on a d20, the target is automatically slain.",
+        kind: "weapon",
+        rarity: "legendary",
+        bulk: "moderate",
+        value: "Priceless"
+    }
+]
+
+Item.destroy_all
+Item.create!(items)
