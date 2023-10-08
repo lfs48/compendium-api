@@ -85,6 +85,6 @@ test:
 #
 production:
   <<: *default
-  database: railway
+  database: <%= ENV["COMPENDIUM_DB_NAME"] %>
   username: <%= ENV["COMPENDIUM_DB_USERNAME"] %>
   password: <%= ENV["COMPENDIUM_DB_PASSWORD"] %>
