@@ -85,6 +85,4 @@ test:
 #
 production:
   <<: *default
-  database: <%= ENV["COMPENDIUM_DB_NAME"] %>
-  username: <%= ENV["COMPENDIUM_DB_USERNAME"] %>
-  password: <%= ENV["COMPENDIUM_DB_PASSWORD"] %>
+  url: <%= ENV["COMPENDIUM_DB_URL"] %>
