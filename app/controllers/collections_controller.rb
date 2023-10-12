@@ -18,26 +18,30 @@ class CollectionsController < ApplicationController
     end
 
     def create
-        @col = Collection.new(collection_params)
-        @col.user_id = @user.id
-        if @col.save
-            CollectionEntity.update_collection_entities!(@col, entity_params[:entities])
-            @col = Collection.find_by(id: @col.id)
-            render "collections/show", status: :created
-        else
-            @errors = @col.errors
-            render "errors/show", status: :unprocessable_entity
+        Collection.transaction do
+            @col = Collection.new(collection_params)
+            @col.user_id = @user.id
+            if @col.save
+                CollectionEntity.update_collection_entities!(@col, entity_params[:entities])
+                @col = Collection.find_by(id: @col.id)
+                render "collections/show", status: :created
+            else
+                @errors = @col.errors
+                render "errors/show", status: :unprocessable_entity
+            end
         end
     end
 
     def update
-        if @col.update(collection_params)
-            CollectionEntity.update_collection_entities!(@col, entity_params[:entities])
-            get_collection_by_id
-            render "collections/show"
-        else
-            @errors = @col.errors.full_messages
-            render "errors/show", status: :unprocessable_entity
+        Collection.transaction do
+            if @col.update(collection_params)
+                CollectionEntity.update_collection_entities!(@col, entity_params[:entities])
+                get_collection_by_id
+                render "collections/show"
+            else
+                @errors = @col.errors.full_messages
+                render "errors/show", status: :unprocessable_entity
+            end
         end
     end
 
