@@ -35,8 +35,10 @@ class CollectionsController < ApplicationController
     def update
         Collection.transaction do
             if @col.update(collection_params)
-                CollectionEntity.update_collection_entities!(@col, entity_params[:entities])
-                get_collection_by_id
+                if (entity_params[:entities] && entity_params[:entities].length > 0)
+                    CollectionEntity.update_collection_entities!(@col, entity_params[:entities])
+                    get_collection_by_id
+                end
                 render "collections/show"
             else
                 @errors = @col.errors.full_messages
