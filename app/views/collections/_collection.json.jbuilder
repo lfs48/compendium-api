@@ -3,8 +3,8 @@ json.extract! col,
     :title
 
 json.entities do
-    json.array! col.collection_entities do |entity|
-        json.id entity.id
-        json.entity_type entity.entity_type
+    json.array! col.collection_entities do |collection_entity|
+        json.id collection_entity.entity_id
+        json.entity_type collection_entity.entity_type
     end
 end
