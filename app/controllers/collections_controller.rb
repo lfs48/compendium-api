@@ -5,7 +5,7 @@ class CollectionsController < ApplicationController
     before_action :require_owner, only: [:show, :update, :destroy]
 
     def index
-        @cols = Collection.includes(:user).where(:user => @user)
+        @cols = Collection.includes(:user, :collection_entities).where(:user => @user)
         render "collections/index"
     end
 
