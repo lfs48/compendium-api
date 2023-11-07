@@ -1,3 +1,3 @@
-json.array! @spells do |spell|
-    json.partial! "spells/spell", spell: spell
+json.spells do
+    json.partial! "spells/spells", spells: @spells
 end

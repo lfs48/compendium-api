@@ -1,3 +1,3 @@
-json.array! @dndclasses do |dndclass|
-    json.partial! "dnd_classes/dndclass", dndclass: dndclass
+json.dnd_classes do
+    json.partial! "dnd_classes/dndclasses", dndclasses: @dndclasses
 end

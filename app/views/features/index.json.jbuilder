@@ -1,3 +1,3 @@
-json.array! @features do |feature|
-    json.partial! "features/feature", feature: feature
+json.features do
+    json.partial! "features/features", features: @features
 end

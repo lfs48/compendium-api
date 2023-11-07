@@ -1,3 +1,3 @@
-json.array! @races do |race|
-    json.partial! "races/race", race: race
+json.races do
+    json.partial! "races/races", races: @races
 end

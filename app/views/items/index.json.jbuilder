@@ -1,3 +1,3 @@
-json.array! @items do |item|
-    json.partial! "items/item", item: item
+json.items do
+    json.partial! "items/items", items: @items
 end
