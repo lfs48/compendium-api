@@ -11,4 +11,4 @@ json.extract! dndclass,
     :spellcasting, 
     :table_cols
     
-json.features dndclass.feature_sources.map { |feature_source| feature_source }
+json.features dndclass.feature_sources.map { |feature_source| feature_source.feature_id }
