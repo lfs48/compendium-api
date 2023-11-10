@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     post 'register'
   end
 
+  resources :entities, only: [:index]
+
   resources :features, 
   only: [
     :index,
