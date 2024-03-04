@@ -64,4 +64,15 @@ Rails.application.routes.draw do
     :destroy
   ]
 
+  resources :chats,
+  only: [
+    :index
+  ]
+
+  resources :messages,
+  only: [
+    :show,
+    :create
+  ]
+
 end
