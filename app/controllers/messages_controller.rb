@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
 
     before_action :get_message_by_id, only: [:show]
+
     before_action :require_auth
 
     def show
@@ -29,13 +30,12 @@ class MessagesController < ApplicationController
         .permit(
             :body,
             :kind,
-            :chat_id,
             :user_id
         )
     end
 
     def get_message_by_id
-        @message = message.find_by(id: params[:id])
+        @message = Message.find_by(id: params[:id])
     end
 
 end

@@ -25,12 +25,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_23_203620) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "chats", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "title", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "collection_entities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "collection_id", null: false
     t.uuid "entity_id", null: false
@@ -104,7 +98,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_23_203620) do
   create_table "messages", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "body", null: false
     t.string "kind", null: false
-    t.uuid "chat_id", null: false
     t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
