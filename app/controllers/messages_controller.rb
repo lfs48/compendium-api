@@ -4,6 +4,11 @@ class MessagesController < ApplicationController
 
     before_action :require_auth
 
+    def index
+        @messages = Message.includes(:user).all
+        render "messages/index"
+    end
+
     def show
         if @message
             render "messages/show"
