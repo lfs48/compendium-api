@@ -1,5 +1,5 @@
 json.extract! message, 
     :id, 
     :body,
-    :kind,
-    :user_id
+    :kind
+json.set! :user, message.user.username
