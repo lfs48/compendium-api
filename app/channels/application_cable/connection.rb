@@ -3,7 +3,11 @@ module ApplicationCable
     identified_by :current_user
 
     def connect
-      self.current_user = find_verified_user
+      begin
+        self.current_user = find_verified_user
+      rescue
+        reject_unauthorized_connection
+      end
     end
 
     private
@@ -24,7 +28,7 @@ module ApplicationCable
 
     def decode_jwt
       begin
-        token = request.headers["Authorization"].split(' ')[1]
+        token = request.query_parameters[:token]
         decoded_array = JWT.decode( token, jwt_secret, true, { algorithm: 'HS256' } )
         payload = decoded_array.first
         return payload
