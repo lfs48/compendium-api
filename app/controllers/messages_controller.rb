@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
     before_action :require_auth
 
     def index
-        @messages = Message.includes(:user).all
+        @messages = Message.includes(:user).order(created_at: :desc).page params[:page]
         render "messages/index"
     end
 

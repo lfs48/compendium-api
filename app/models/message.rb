@@ -2,6 +2,8 @@ class Message < ApplicationRecord
 
     after_create_commit { broadcast_message }
 
+    paginates_per 25
+
     validates :body, 
     :kind,
     :user_id,
