@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
 
     before_action :get_message_by_id, only: [:show]
 
-    before_action :require_auth
+    before_action :require_auth, only: [:create]
 
     def index
         @messages = Message.includes(:user).order(created_at: :desc).page params[:page]
