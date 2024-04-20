@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_23_203620) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_20_144734) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
-  enable_extension "timescaledb"
-  enable_extension "timescaledb_toolkit"
+
+  create_table "boons", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description", null: false
+    t.string "prereq"
+    t.uuid "source_id"
+    t.string "source_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "collection_entities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "collection_id", null: false
@@ -44,6 +52,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_23_203620) do
     t.string "equipment", null: false
     t.string "spellcasting", null: false
     t.json "table_cols", default: {}
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "feats", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description", null: false
+    t.uuid "dnd_class_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -116,6 +132,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_23_203620) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "gm", default: false, null: false
+    t.string "color", default: "#000000", null: false
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
