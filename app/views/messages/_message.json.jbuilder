@@ -3,4 +3,7 @@ json.extract! message,
     :body,
     :kind,
     :created_at
-json.set! :user, message.user.username
+    
+json.set! :user do
+    json.partial! 'users/user', user: message.user
+end
