@@ -20,7 +20,12 @@ class Message < ApplicationRecord
             id:,
             body:,
             created_at:,
-            user: user.username
+            user: {
+                username: user.username,
+                id: user.id,
+                color: user.color,
+                gm: user.gm
+            }
         })
     end
 
